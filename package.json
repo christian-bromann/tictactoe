@@ -1,0 +1,15 @@
+{
+  "name": "tiktakto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:game": "pnpm --filter game dev",
+    "build:game": "pnpm --filter game build",
+    "start:game": "pnpm --filter game start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.22.0"
+}
