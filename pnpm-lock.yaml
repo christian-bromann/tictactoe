@@ -58,9 +58,6 @@ importers:
       '@langchain/core':
         specifier: ^1.1.4
         version: 1.1.4(openai@6.10.0(ws@8.18.3)(zod@4.1.13))
-      '@langchain/openai':
-        specifier: file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-openai
-        version: file:../../LangChain/langchainjs/libs/providers/langchain-openai(@langchain/core@1.1.4(openai@6.10.0(ws@8.18.3)(zod@4.1.13)))(ws@8.18.3)
       langchain:
         specifier: file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/langchain
         version: file:../../LangChain/langchainjs/libs/langchain(@langchain/core@1.1.4(openai@6.10.0(ws@8.18.3)(zod@4.1.13)))(openai@6.10.0(ws@8.18.3)(zod@4.1.13))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)

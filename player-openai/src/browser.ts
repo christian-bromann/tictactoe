@@ -36,7 +36,7 @@ export async function getBrowser({
             },
             logLevel: "error",
         })
-        await browser.url("http://localhost:3000/")
+        await browser.url("https://tictactoe.bromann.dev/")
         await browser.setViewport({ width: windowWidth, height: windowHeight})
     }
     return browser
