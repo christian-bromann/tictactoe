@@ -1,3 +1,4 @@
 packages:
   - "game"
-  - "agent"
+  - "player-openai"
+  - "player-anthropic"

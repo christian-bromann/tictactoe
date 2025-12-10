@@ -6,7 +6,20 @@
   "scripts": {
     "dev:game": "pnpm --filter game dev",
     "build:game": "pnpm --filter game build",
-    "start:game": "pnpm --filter game start"
+    "start:game": "pnpm --filter game start",
+    "dev:player-openai": "pnpm --filter player-openai dev",
+    "build:player-openai": "pnpm --filter player-openai build",
+    "start:player-openai": "pnpm --filter player-openai start",
+    "dev:player-anthropic": "pnpm --filter player-anthropic dev",
+    "build:player-anthropic": "pnpm --filter player-anthropic build",
+    "start:player-anthropic": "pnpm --filter player-anthropic start"
+  },
+  "pnpm": {
+    "overrides": {
+      "@langchain/openai": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-openai",
+      "@langchain/anthropic": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-anthropic",
+      "langchain": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/langchain"
+    }
   },
   "keywords": [],
   "author": "",

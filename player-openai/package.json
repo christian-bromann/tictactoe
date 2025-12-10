@@ -1,0 +1,23 @@
+{
+  "name": "player-openai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-anthropic",
+    "@langchain/core": "^1.1.4",
+    "@langchain/openai": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-openai",
+    "langchain": "^1.1.5",
+    "webdriverio": "^9.21.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}
