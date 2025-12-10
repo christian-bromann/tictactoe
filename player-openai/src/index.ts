@@ -58,5 +58,5 @@ while (!hasGameEnded()) {
     })
 }
 
-console.log(`\n🏁 Game finished: ${result.messages.at(-1)?.content}`)
+console.log(`\n🏁 Game finished: ${result.messages.at(-1)?.text}`)
 await closeBrowser()
