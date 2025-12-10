@@ -1,0 +1,23 @@
+{
+  "name": "player-anthropic",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "^1.2.3",
+    "@langchain/core": "^1.1.4",
+    "langchain": "^1.1.5",
+    "sharp": "^0.34.5",
+    "webdriverio": "^9.21.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}
