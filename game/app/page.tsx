@@ -31,38 +31,53 @@ function isDraw(board: Board): boolean {
   return board.every((cell) => cell !== null);
 }
 
+// Cell position labels for AI assistance
+const CELL_LABELS = [
+  "TOP-LEFT", "TOP-CENTER", "TOP-RIGHT",
+  "MID-LEFT", "CENTER", "MID-RIGHT", 
+  "BOT-LEFT", "BOT-CENTER", "BOT-RIGHT"
+];
+
 function Square({
   value,
   onClick,
   disabled,
   isWinning,
+  index,
 }: {
   value: Cell;
   onClick: () => void;
   disabled: boolean;
   isWinning: boolean;
+  index: number;
 }) {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      data-cell={index}
+      data-position={CELL_LABELS[index]}
       className={`
-        aspect-square w-full
-        border border-[var(--border)]
-        bg-[var(--background)]
-        text-4xl sm:text-5xl md:text-6xl font-light
+        aspect-square w-full relative
+        border-2 border-[var(--grid-color)]
+        bg-[var(--cell-bg)]
+        text-5xl sm:text-6xl md:text-7xl font-bold
         transition-all duration-150
-        hover:bg-[var(--border)]/30
+        hover:bg-[var(--cell-hover)]
         disabled:cursor-not-allowed
         flex items-center justify-center
-        ${isWinning ? "bg-[var(--accent)]/10" : ""}
+        ${isWinning ? "bg-[var(--win-bg)]" : ""}
         ${value ? "cursor-default" : "cursor-pointer"}
       `}
-      aria-label={value ? `Square ${value}` : "Empty square"}
+      aria-label={value ? `Square ${index}: ${value}` : `Square ${index}: Empty`}
     >
+      {/* Position label for AI to identify cells */}
+      <span className="absolute top-1 left-1 text-[8px] text-[var(--muted)] opacity-60 font-mono">
+        {CELL_LABELS[index]}
+      </span>
       {value && (
         <span
-          className={`animate-fade-in ${
+          className={`animate-fade-in drop-shadow-md ${
             value === "X" ? "text-[var(--x-color)]" : "text-[var(--o-color)]"
           }`}
         >
@@ -85,10 +100,11 @@ function Board({
   winLine: WinLine;
 }) {
   return (
-    <div className="grid grid-cols-3 gap-0 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] border border-[var(--border)] rounded-lg overflow-hidden shadow-sm">
+    <div className="grid grid-cols-3 gap-1 w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] p-2 bg-[var(--grid-color)] rounded-xl shadow-lg">
       {board.map((cell, index) => (
         <Square
           key={index}
+          index={index}
           value={cell}
           onClick={() => onCellClick(index)}
           disabled={disabled || cell !== null}
