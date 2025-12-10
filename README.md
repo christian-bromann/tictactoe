@@ -26,7 +26,7 @@ tiktakto/
 
 | Directory | Description |
 |-----------|-------------|
-| `game/` | A Next.js web application hosting the Tic-Tac-Toe game at `localhost:3000` |
+| `game/` | A Next.js web application hosting the Tic-Tac-Toe game at `localhost:3000` (deployed to https://tic-tac-toe.bromann.dev/) |
 | `player-anthropic/` | AI agent using Anthropic's Claude with `computer_20250124` tool |
 | `player-openai/` | AI agent using OpenAI's `computer-use-preview` model |
 

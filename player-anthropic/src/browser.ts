@@ -39,7 +39,7 @@ export async function getBrowser({
             },
             logLevel: "error",
         })
-        await browser.url("https://tictactoe.bromann.dev/")
+        await browser.url("https://tic-tac-toe.bromann.dev/")
         await browser.setViewport({ width: windowWidth, height: windowHeight })
     }
     return browser

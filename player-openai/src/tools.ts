@@ -1,3 +1,6 @@
+import fs from "node:fs"
+import path from "node:path"
+
 import { z } from "zod"
 import { Key } from "webdriverio"
 
@@ -9,6 +12,9 @@ import { ToolRuntime, tool, type DynamicStructuredTool } from "@langchain/core/t
 import { getBrowser } from "./browser.js"
 
 export type { DynamicStructuredTool, ToolMessage, ComputerUseInput }
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
+let screenshotCounter = 0
 
 /**
  * Take a screenshot of the browser and return a tool message
@@ -27,6 +33,12 @@ async function takeScreenshot(
         context,
         origin: "viewport",
     })
+
+    const screenshotPath = path.join(__dirname, '..', '..', 'screenshots', `openai-${screenshotCounter}.png`)
+    fs.mkdirSync(path.dirname(screenshotPath), { recursive: true })
+    fs.writeFileSync(screenshotPath, Buffer.from(result.data, "base64"))
+    screenshotCounter++
+
     return new ToolMessage({
         tool_call_id: lastCallId,
         content: [

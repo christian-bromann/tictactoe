@@ -63,7 +63,7 @@ NEVER declare victory after just 1 or 2 moves - a win requires exactly 3 X's in 
 
 REMEMBER: Each turn you must click on a DIFFERENT empty cell. If your click doesn't place an X, you clicked an occupied cell - try a different one!`
 
-export const userPrompt = `Let's play Tic-Tac-Toe! The game is already open in the browser at localhost:3000.
+export const userPrompt = `Let's play Tic-Tac-Toe! The game is already open in the browser at https://tic-tac-toe.bromann.dev/
 
 You are "X" and you ALWAYS go first. I am "O" (the human player).
 

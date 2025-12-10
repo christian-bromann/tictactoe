@@ -1,4 +1,5 @@
-import fs from "fs"
+import fs from "node:fs"
+import path from "node:path"
 import { Key } from "webdriverio"
 import { z } from "zod"
 
@@ -7,6 +8,8 @@ import { tools, type Computer20250124Action } from "@langchain/anthropic"
 import { AIMessage, ToolMessage, BaseMessage } from "@langchain/core/messages"
 
 import { getBrowser } from "./browser.js"
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 let screenshotCounter = 0
 
@@ -26,7 +29,9 @@ async function takeScreenshot(browser: WebdriverIO.Browser, lastCallId: string):
         origin: "viewport",
     })
 
-    fs.writeFileSync(`screenshot-${screenshotCounter}.png`, Buffer.from(result.data, "base64"))
+    const screenshotPath = path.join(__dirname, '..', '..', 'screenshots', `anthropic-${screenshotCounter}.png`)
+    fs.mkdirSync(path.dirname(screenshotPath), { recursive: true })
+    fs.writeFileSync(screenshotPath, Buffer.from(result.data, "base64"))
     screenshotCounter++
     
     return new ToolMessage({
