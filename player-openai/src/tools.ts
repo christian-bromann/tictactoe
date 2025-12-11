@@ -5,7 +5,7 @@ import { z } from "zod"
 import { Key } from "webdriverio"
 
 import { BaseMessage } from "@langchain/core/messages"
-import { tools, type ComputerUseInput } from "@langchain/openai"
+import { tools, type ComputerUseInput, type ComputerUseReturnType } from "@langchain/openai"
 import { AIMessage, ToolMessage } from "@langchain/core/messages"
 import { ToolRuntime, tool, type DynamicStructuredTool } from "@langchain/core/tools"
 

@@ -1,15 +1,15 @@
 import { createAgent, HumanMessage, ClearToolUsesEdit, contextEditingMiddleware } from "langchain"
 
-import { computerUseTool, gameEndedTool, hasGameEnded } from "./tools.js"
+import { computerUseTool, gameEndedTool, hasGameEnded, memoryTool } from "./tools.js"
 import { closeBrowser } from "./browser.js"
-import { systemPrompt, userPrompt, continuePrompt } from "./prompts.js"
+import { systemPrompt, userPrompt, continuePrompt, memoryReviewPrompt, gameEndPrompt } from "./prompts.js"
 
 /**
- * Create the Anthropic agent with computer use capabilities
+ * Create the Anthropic agent with computer use and memory capabilities
  */
 const agent = createAgent({
     model: "anthropic:claude-sonnet-4-5",
-    tools: [computerUseTool, gameEndedTool],
+    tools: [computerUseTool, gameEndedTool, memoryTool],
     /**
      * Middleware to manage context window by clearing old tool uses.
      * This prevents context overflow from accumulated screenshots.
@@ -26,13 +26,23 @@ const agent = createAgent({
 })
 
 console.log("🎮 Starting Tic-Tac-Toe game...")
-console.log("⏳ Waiting for agent to play...\n")
+console.log("🧠 Reviewing past game memories...\n")
 
 /**
- * Initial invocation of the agent
+ * First, have the agent review past game memories
  */
 let result = await agent.invoke(
-    { messages: userPrompt },
+    { messages: memoryReviewPrompt },
+    { recursionLimit: 100 }
+)
+
+console.log("⏳ Starting gameplay...\n")
+
+/**
+ * Start the actual game
+ */
+result = await agent.invoke(
+    { messages: [...result.messages, new HumanMessage(userPrompt)] },
     { recursionLimit: 100 }
 )
 
@@ -50,4 +60,15 @@ while (!hasGameEnded()) {
 }
 
 console.log(`\n🏁 Game finished: ${result.messages.at(-1)?.text}`)
+
+/**
+ * After the game ends, have the agent save learnings to memory
+ */
+console.log("\n🧠 Saving game learnings to memory...")
+result = await agent.invoke(
+    { messages: [...result.messages, new HumanMessage(gameEndPrompt)] },
+    { recursionLimit: 100 }
+)
+
+console.log("✅ Memory updated!")
 await closeBrowser()

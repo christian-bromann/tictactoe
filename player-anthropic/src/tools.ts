@@ -4,10 +4,11 @@ import { Key } from "webdriverio"
 import { z } from "zod"
 
 import { tool, type ToolRuntime } from "langchain"
-import { tools, type Computer20250124Action } from "@langchain/anthropic"
+import { tools, type Computer20250124Action, type ComputerUseReturnType } from "@langchain/anthropic"
 import { AIMessage, ToolMessage, BaseMessage } from "@langchain/core/messages"
 
 import { getBrowser } from "./browser.js"
+export { memoryTool } from "./memory.js"
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 

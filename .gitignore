@@ -42,3 +42,6 @@ yarn-error.log*
 next-env.d.ts
 node_modules
 screenshots/
+
+# AI player memory (learned game strategies)
+memory/
