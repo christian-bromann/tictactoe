@@ -14,13 +14,6 @@
     "build:player-anthropic": "pnpm --filter player-anthropic build",
     "start:player-anthropic": "pnpm --filter player-anthropic start"
   },
-  "pnpm": {
-    "overrides": {
-      "@langchain/openai": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-openai",
-      "@langchain/anthropic": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/providers/langchain-anthropic",
-      "langchain": "file:/Users/christian.bromann/Sites/LangChain/langchainjs/libs/langchain"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
