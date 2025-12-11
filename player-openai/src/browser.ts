@@ -1,4 +1,4 @@
-import { remote, Key } from "webdriverio"
+import { remote } from "webdriverio"
 
 /**
  * WebdriverIO browser instance

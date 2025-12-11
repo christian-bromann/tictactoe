@@ -2,7 +2,6 @@ import fs from "node:fs"
 import path from "node:path"
 
 import { tools } from "@langchain/anthropic"
-import { type DynamicStructuredTool } from "@langchain/core/tools"
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
